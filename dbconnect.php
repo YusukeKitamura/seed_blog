@@ -1,4 +1,4 @@
-<?php 
+<?php
   // DB接続準備
   // $dsn = 'mysql:dbname=seed_sns;host=root';
   // $user = 'root';
@@ -7,5 +7,5 @@
   // $dbh->query('SET NAMES utf8');
   $db = mysqli_connect('localhost', 'root', 'mysql', 'seed_blog') or die(mysqli_connect_error());
   mysqli_set_charset($db, 'utf8');
-  
+
  ?>

@@ -8,11 +8,11 @@
     <title>Seed Blog</title>
 
     <!-- Bootstrap -->
-    <link href="/seed_blog/webroot/assets/css/bootstrap.css" rel="stylesheet">
-    <link href="/seed_blog/webroot/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="/seed_blog/webroot/assets/css/form.css" rel="stylesheet">
-    <link href="/seed_blog/webroot/assets/css/timeline.css" rel="stylesheet">
-    <link href="/seed_blog/webroot/assets/css/main.css" rel="stylesheet">
+    <link href="../assets/css/bootstrap.css" rel="stylesheet">
+    <link href="../assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="../assets/css/form.css" rel="stylesheet">
+    <link href="../assets/css/timeline.css" rel="stylesheet">
+    <link href="../assets/css/main.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,7 +32,7 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="index.php">
+              <a class="navbar-brand" href="index.html">
                 <span class="strong-title"><i class="fa fa-pencil-square-o"></i> Seed Blog</span>
               </a>
           </div>
@@ -47,11 +47,28 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4 content-margin-top">
-        <?php
-          include('views/blogs/'.$this->action.'.php');
-         ?>
+        <div class="msg">
+          <form method="post" action="" class="form-horizontal" role="form">
+            <div class="form-group">
+              <label for="name" class="col-md-3 control-label">タイトル</label>
+              <div class="col-md-9">
+                ここにタイトルここにタイトルここにタイトル
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="name" class="col-md-3 control-label">本文</label>
+              <div class="col-md-9">
+                ここに本文ここに本文ここに本文ここに本文ここに本文ここに本文ここに本文ここに本文
+              </div>
+            </div>
+            <div class="form-group">
+              <p>
+                <a href="index.html" class="btn btn-default">戻る</a>&nbsp;&nbsp;
+              </p>
+            </div>
+          </form>
+        </div>
       </div>
-
     </div>
   </div>
 

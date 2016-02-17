@@ -18,5 +18,17 @@
 			//取得結果を返す
 			return $rtn;
 		}
+
+		public function show() {
+			$sql = 'SELECT * FROM `blogs` WHERE `delete_flag`=0';
+			$results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error());
+
+			$rtn = array();
+			while($result = mysqli_fetch_assoc($results)) {
+				$rtn[] = $result;
+			}
+			//取得結果を返す
+			return $rtn;
+		}
 	}
  ?>

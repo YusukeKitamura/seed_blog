@@ -9,6 +9,9 @@
 		case 'index':
 			$controller->index();
 			break;
+		case 'show':
+			$controller->show();
+			break;
 		default:
 			break;
 	}
@@ -33,7 +36,23 @@
 			$this->action = 'index';
 
 			//ビューを呼び出す
-			require('views/layout/application.php');
+			include('views/layout/application.php');
+		}
+
+		public function show() {
+			//ここでモデルを呼び出す
+			$blog = new Blog();
+			$this->viewOptions = $blog->show();
+
+			foreach ($this->viewOptions as $viewOption) {
+				echo $viewOption['id'];
+				echo $viewOption['title'];
+				echo $viewOption['created'];
+			}
+			$this->action = 'show';
+
+			//ビューを呼び出す
+			include('views/layout/application.php');
 		}
 	}
 
