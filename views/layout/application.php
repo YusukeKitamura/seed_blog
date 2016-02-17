@@ -51,7 +51,6 @@
           include('views/blogs/'.$this->action.'.php');
          ?>
       </div>
-
     </div>
   </div>
 
