@@ -1,11 +1,14 @@
 <?php
   // DB接続準備
-  // $dsn = 'mysql:dbname=seed_sns;host=root';
-  // $user = 'root';
-  // $password = 'mysql';
-  // $dbh = new PDO($dsn,$user,$password);
-  // $dbh->query('SET NAMES utf8');
-  $db = mysqli_connect('localhost', 'root', 'mysql', 'seed_blog') or die(mysqli_connect_error());
-  mysqli_set_charset($db, 'utf8');
+	function getDB() {
+		$host = 'localhost';
+		$user = 'root';
+		$password = '';
+		$dbName = 'seed_blog';
+		$charSet = 'utf8';
+		$db = mysqli_connect($host, $user, $password, $dbName) or die(mysqli_connect_error());
+		mysqli_set_charset($db, $charSet);
+		return $db;
+	}
 
  ?>
