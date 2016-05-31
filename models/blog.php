@@ -4,11 +4,11 @@
 		public function __construct() {
 			require('dbconnect.php');
 			// DB接続の値を代入
-			$this->dbconnect = getDB();
+			$this->dbconnect = $db;
 		}
 
 		public function index() {
-			$sql = 'SELECT * FROM `blogs` WHERE `delete_flag`=0 ORDER BY `created` DESC';
+			$sql = 'SELECT * FROM `blogs` WHERE `delete_flag`=0';
 			$results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error());
 
 			$rtn = array();
@@ -28,15 +28,12 @@
 			return $rtn;
 		}
 
-		public function create($post) {
-		      $sql = sprintf('INSERT INTO `blogs`(`title`, `body`, `delete_flag`, `created`) VALUES ("%s","%s",0,now())',
-		      mysqli_real_escape_string($this->dbconnect, $post['title']),
-		      mysqli_real_escape_string($this->dbconnect, $post['body']));
-		      var_dump($sql);
+		public function add() {
 
-		      mysqli_query($this->dbconnect, $sql) or die(mysqli_error());
-		      header('Location: /seed_blog/blogs/index/');
-		      exit();
+		}
+
+		public function create() {
+
 		}
 
 		public function edit($id) {
@@ -48,23 +45,22 @@
 			return $rtn;
 		}
 
-		public function update($id, $post) {
-			$sql = sprintf('UPDATE `blogs` SET `title`="%s",`body`="%s",`modified`=now() WHERE `id`=%d',
-			 	mysqli_real_escape_string($this->dbconnect, $post['title']),
-		    	mysqli_real_escape_string($this->dbconnect, $post['body']),
-		    	$id);
+		public function update($id) {
+			$sql = sprintf('SELECT * FROM `blogs` WHERE `delete_flag`=0 AND `id`=%d', $id);
+			$results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error());
 
-		    mysqli_query($this->dbconnect, $sql) or die(mysqli_error());
-		    header('Location: /seed_blog/blogs/index/');
-		    exit();
+			$rtn = mysqli_fetch_assoc($results);
+			//取得結果を返す
+			return $rtn;
 		}
 
 		public function delete($id) {
-			$sql = sprintf('UPDATE `blogs` SET `delete_flag`=1 WHERE `id`=%d', $id);
+			$sql = sprintf('SELECT * FROM `blogs` WHERE `delete_flag`=0 AND `id`=%d', $id);
+			$results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error());
 
-		    mysqli_query($this->dbconnect, $sql) or die(mysqli_error());
-		    header('Location: /seed_blog/blogs/index/');
-		    exit();
+			$rtn = mysqli_fetch_assoc($results);
+			//取得結果を返す
+			return $rtn;
 		}
 	}
  ?>

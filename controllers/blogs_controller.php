@@ -16,13 +16,13 @@
 			$controller->add();
 			break;
 		case 'create':
-			$controller->create($post);
+			$controller->create();
 			break;
 		case 'edit':
 			$controller->edit($id);
 			break;
 		case 'update':
-			$controller->update($id, $post);
+			$controller->update($id);
 			break;
 		case 'delete':
 			$controller->delete($id);
@@ -61,18 +61,22 @@
 		}
 
 		public function add() {
+			//ここでモデルを呼び出す
+			$blog = new Blog();
+			$this->viewOptions = $blog->add();
+
 			$this->action = 'add';
 
 			//ビューを呼び出す
 			include('views/layout/application.php');
 		}
 
-		public function create($post) {
+		public function create() {
 			//ここでモデルを呼び出す
 			$blog = new Blog();
-			$this->viewOptions = $blog->create($post);
+			$this->viewOptions = $blog->create();
 
-			$this->action = 'index';
+			$this->action = 'create';
 
 			//ビューを呼び出す
 			include('views/layout/application.php');
@@ -89,12 +93,12 @@
 			include('views/layout/application.php');
 		}
 
-		public function update($id, $post) {
+		public function update($id) {
 			//ここでモデルを呼び出す
 			$blog = new Blog();
-			$this->viewOptions = $blog->update($id, $post);
+			$this->viewOptions = $blog->update($id);
 
-			$this->action = 'index';
+			$this->action = 'update';
 
 			//ビューを呼び出す
 			include('views/layout/application.php');
@@ -105,7 +109,7 @@
 			$blog = new Blog();
 			$this->viewOptions = $blog->delete($id);
 
-			$this->action = 'index';
+			$this->action = 'delete';
 
 			//ビューを呼び出す
 			include('views/layout/application.php');

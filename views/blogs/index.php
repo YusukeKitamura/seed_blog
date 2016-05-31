@@ -1,5 +1,4 @@
-      	<p><a href="/seed_blog/blogs/add/" class="btn btn-info">新規投稿</a></p>
-
+      <p><a href="/seed_blos/blogs/add/" class="btn btn-info">新規投稿</a></p>
       	<?php foreach ($this->viewOptions as $viewOption): ?>
         <div class="msg">
           <p><a href="/seed_blog/blogs/show/<?php echo $viewOption['id']; ?>/"><?php echo $viewOption['title']; ?></a></p>
